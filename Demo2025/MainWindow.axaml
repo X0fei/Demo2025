@@ -2,8 +2,69 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
         x:Class="Demo2025.MainWindow"
-        Title="Demo2025">
-    Welcome to Avalonia!
+		x:CompileBindings="False"
+        Title="Мастер Пол — Главная"
+		Width="600" Height="450"
+		WindowStartupLocation="CenterScreen"
+		Icon="/Assets/Мастер пол.ico">
+	<StackPanel
+		Margin="10"
+		Background="#FFFFFF">
+		<Button
+			Background="#67BA80"
+			Margin="0 0 0 10"
+			Content="Добавить партнёра"
+			FontFamily="Segoe UI"
+			Click="AddEditPartnerButton_Click"/>
+		<ListBox
+			Background="#F4E8D3"
+			BorderBrush="Black"
+			BorderThickness="1"
+			Name="PartnersListBox"
+			FontFamily="Segoe UI"
+			Height="387">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<Border
+						Tag="{Binding Id}"
+						DoubleTapped="Border_DoubleTapped"
+						BorderBrush="Black"
+						Background="#F4E8D3"
+						BorderThickness="1">
+						<StackPanel
+							HorizontalAlignment="Stretch"
+							Margin="10"
+							Orientation="Horizontal">
+							<StackPanel
+								Width="500">
+								<TextBlock>
+									<Run Text="{Binding PartnerTypeNavigation.Name}"/>
+									<Run Text="|"/>
+									<Run Text="{Binding Name}"/>
+								</TextBlock>
+								<TextBlock
+									Text="{Binding Director}"/>
+								<TextBlock
+									Text="{Binding Phone}"/>
+								<TextBlock>
+									<Run Text="Рейтинг:"/>
+									<Run Text="{Binding Rating}"/>
+								</TextBlock>
+							</StackPanel>
+							<StackPanel
+								HorizontalAlignment="Right">
+								<TextBlock
+									HorizontalAlignment="Right">
+									<Run Text="{Binding Discount}"/>
+									<Run Text="%"/>
+								</TextBlock>
+							</StackPanel>
+						</StackPanel>
+					</Border>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+	</StackPanel>
 </Window>

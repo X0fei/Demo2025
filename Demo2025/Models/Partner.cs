@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Demo2025.Models;
 
@@ -25,5 +26,20 @@ public partial class Partner
 
     public virtual PartnerType PartnerTypeNavigation { get; set; } = null!;
 
-    public virtual ICollection<PartnersProduct> PartnersProducts { get; set; } = new List<PartnersProduct>();
+    public virtual ICollection<PartnersProduct> PartnersProducts { get; set; } = [];
+    public int Discount
+    {
+        get
+        {
+            //Считаем сумму количества проданных продуктов и в зависимости от количества возвращаем скидку
+            switch (PartnersProducts.Select(partnerProduct => partnerProduct.ProductQuantity).Sum())
+            {
+                case < 10000: return 0;
+                case < 50000: return 5;
+                case < 300000: return 10;
+                case > 300000: return 15;
+            }
+            return 0;
+        }
+    }
 }
