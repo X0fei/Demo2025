@@ -1,0 +1,89 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
+        x:Class="Demo2025.AddEditWindow"
+		x:CompileBindings="False"
+        Title="Мастер пол — Добавление/Редактирование партнёра"
+		Width="600" Height="450"
+		WindowStartupLocation="CenterScreen"
+		Icon="/Assets/Мастер пол.ico">
+	<StackPanel
+		Margin="10"
+		Background="#FFFFFF">
+		<Button
+			Background="#67BA80"
+			Content="Назад"
+			FontFamily="Segoe UI"
+			Click="GoBackButton_Click"
+			Margin="0 0 0 10"/>
+		<TextBox
+			Name="Name"
+			FontFamily="Segoe UI"
+			Watermark="Наименование"
+			Margin="0 0 0 5"/>
+		<ComboBox
+			FontFamily="Segoe UI"
+			Name="Type"
+			PlaceholderText="Тип"
+			Margin="0 0 0 5">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock
+						Text="{Binding Name}"/>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+		<TextBox
+			FontFamily="Segoe UI"
+			Name="Rating"
+			Watermark="Рейтинг"
+			Margin="0 0 0 5"/>
+		<TextBox
+			FontFamily="Segoe UI"
+			Name="Adress"
+			Watermark="Адрес"
+			Margin="0 0 0 5"/>
+		<TextBox
+			FontFamily="Segoe UI"
+			Name="Director"
+			Watermark="ФИО директора"
+			Margin="0 0 0 5"/>
+		<TextBox
+			FontFamily="Segoe UI"
+			Name="Phone"
+			Watermark="Телефон"
+			Margin="0 0 0 5"/>
+		<TextBox
+			FontFamily="Segoe UI"
+			Name="Email"
+			Watermark="Email"
+			Margin="0 0 0 5"/>
+		<TextBox
+			FontFamily="Segoe UI"
+			Name="TIN"
+			Watermark="ИНН"
+			Margin="0 0 0 20"/>
+		<Button
+			Name="AddButton"
+			Background="#67BA80"
+			FontFamily="Segoe UI"
+			Content="Добавить"
+			Click="AddPartnerButton_Click"
+			HorizontalAlignment="Center"/>
+		<Button
+			Name="EditButton"
+			Background="#67BA80"
+			FontFamily="Segoe UI"
+			Content="Редактировать"
+			Click="EditPartnerButton_Click"
+			HorizontalAlignment="Center"/>
+		<TextBlock
+			Name="ErrorTextBlock"
+			IsVisible="False"
+			Foreground="Red"
+			Text="*Неверно введённые данные!"
+			HorizontalAlignment="Center"/>
+	</StackPanel>
+</Window>
